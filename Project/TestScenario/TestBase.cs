@@ -40,7 +40,7 @@ namespace TestScenario
             Data data = new Data();
             foreach(var e in typeof(Data).GetProperties())
             {
-                e.GetSetMethod().Invoke(data, new object[] { TestContext.DataRow[e.Name] });
+                e.GetSetMethod().Invoke(data, new object[] { Convert(e.PropertyType, TestContext.DataRow[e.Name]) });
             }
             return data;
         }
